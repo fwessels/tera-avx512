@@ -43,7 +43,7 @@ loopInt16:
 	vpmulld zmm27, zmm28, zmm29
 
 TEXT ·teraAvx512Int32(SB), 7, $0
-	MOVQ $25000, R9
+	MOVQ $50000, R9
 
 loopInt32:
 	MULLD
@@ -58,6 +58,38 @@ loopInt32:
 	MULLD
 	SUBQ $1, R9
 	JNZ  loopInt32
+
+	VZEROUPPER
+	RET
+
+#define MULLQ \
+	vpmullq zmm0, zmm1, zmm2    \
+	vpmullq zmm3, zmm4, zmm5    \
+	vpmullq zmm6, zmm7, zmm8    \
+	vpmullq zmm9, zmm10, zmm11  \
+	vpmullq zmm12, zmm13, zmm14 \
+	vpmullq zmm15, zmm16, zmm17 \
+	vpmullq zmm18, zmm19, zmm20 \
+	vpmullq zmm21, zmm22, zmm23 \
+	vpmullq zmm24, zmm25, zmm26 \
+	vpmullq zmm27, zmm28, zmm29
+
+TEXT ·teraAvx512Int64(SB), 7, $0
+	MOVQ $50000, R9
+
+loopInt64:
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	MULLQ
+	SUBQ $1, R9
+	JNZ  loopInt64
 
 	VZEROUPPER
 	RET

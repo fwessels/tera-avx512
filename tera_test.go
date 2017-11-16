@@ -42,3 +42,12 @@ func BenchmarkMulInt32_12Core(b *testing.B) { benchmarkMullW(b, 12, teraAvx512In
 func BenchmarkMulInt32_16Core(b *testing.B) { benchmarkMullW(b, 16, teraAvx512Int32) }
 func BenchmarkMulInt32_24Core(b *testing.B) { benchmarkMullW(b, 24, teraAvx512Int32) }
 func BenchmarkMulInt32_32Core(b *testing.B) { benchmarkMullW(b, 32, teraAvx512Int32) }
+
+func BenchmarkMulInt64(b *testing.B)        { benchmarkMullW(b, 1, teraAvx512Int64) }
+func BenchmarkMulInt64_2Core(b *testing.B)  { benchmarkMullW(b, 2, teraAvx512Int64) }
+func BenchmarkMulInt64_4Core(b *testing.B)  { benchmarkMullW(b, 4, teraAvx512Int64) }
+func BenchmarkMulInt64_8Core(b *testing.B)  { benchmarkMullW(b, 8, teraAvx512Int64) }
+func BenchmarkMulInt64_12Core(b *testing.B) { benchmarkMullW(b, 12, teraAvx512Int64) }
+func BenchmarkMulInt64_16Core(b *testing.B) { benchmarkMullW(b, 16, teraAvx512Int64) }
+func BenchmarkMulInt64_24Core(b *testing.B) { benchmarkMullW(b, 24, teraAvx512Int64) }
+func BenchmarkMulInt64_32Core(b *testing.B) { benchmarkMullW(b, 32, teraAvx512Int64) }
