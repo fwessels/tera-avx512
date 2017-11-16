@@ -93,3 +93,67 @@ loopInt64:
 
 	VZEROUPPER
 	RET
+
+#define MULDBL \
+	vmulpd zmm0, zmm1, zmm2    \
+	vmulpd zmm3, zmm4, zmm5    \
+	vmulpd zmm6, zmm7, zmm8    \
+	vmulpd zmm9, zmm10, zmm11  \
+	vmulpd zmm12, zmm13, zmm14 \
+	vmulpd zmm15, zmm16, zmm17 \
+	vmulpd zmm18, zmm19, zmm20 \
+	vmulpd zmm21, zmm22, zmm23 \
+	vmulpd zmm24, zmm25, zmm26 \
+	vmulpd zmm27, zmm28, zmm29
+
+TEXT ·teraAvx512Double(SB), 7, $0
+	MOVQ $50000, R9
+
+loopDouble:
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	MULDBL
+	SUBQ $1, R9
+	JNZ  loopDouble
+
+	VZEROUPPER
+	RET
+
+#define MULSNGL \
+	vmulps zmm0, zmm1, zmm2    \
+	vmulps zmm3, zmm4, zmm5    \
+	vmulps zmm6, zmm7, zmm8    \
+	vmulps zmm9, zmm10, zmm11  \
+	vmulps zmm12, zmm13, zmm14 \
+	vmulps zmm15, zmm16, zmm17 \
+	vmulps zmm18, zmm19, zmm20 \
+	vmulps zmm21, zmm22, zmm23 \
+	vmulps zmm24, zmm25, zmm26 \
+	vmulps zmm27, zmm28, zmm29
+
+TEXT ·teraAvx512Single(SB), 7, $0
+	MOVQ $50000, R9
+
+loopSingle:
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	MULSNGL
+	SUBQ $1, R9
+	JNZ  loopSingle
+
+	VZEROUPPER
+	RET
