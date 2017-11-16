@@ -1,6 +1,6 @@
-TEXT ·teraAVX512(SB), 7, $0
+TEXT ·teraAvx512Int16(SB), 7, $0
 	MOVQ $50000, R9
-loop:
+loopInt16:
 	LONG $0x4875f162; WORD $0xc2d5 // vpmullw zmm0, zmm1, zmm2
 	LONG $0x485df162; WORD $0xddd5 // vpmullw zmm3, zmm4, zmm5
 	LONG $0x4845d162; WORD $0xf0d5 // vpmullw zmm6, zmm7, zmm8
@@ -102,6 +102,113 @@ loop:
 	LONG $0x40350162; WORD $0xc2d5 // vpmullw zmm24, zmm25, zmm26
 	LONG $0x401d0162; WORD $0xddd5 // vpmullw zmm27, zmm28, zmm29
 	SUBQ $1, R9
-	JNZ loop
+	JNZ loopInt16
+	VZEROUPPER
+	RET
+TEXT ·teraAvx512Int32(SB), 7, $0
+	MOVQ $25000, R9
+loopInt32:
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	LONG $0x4875f262; WORD $0xc240 // vpmulld zmm0, zmm1, zmm2
+	LONG $0x485df262; WORD $0xdd40 // vpmulld zmm3, zmm4, zmm5
+	LONG $0x4845d262; WORD $0xf040 // vpmulld zmm6, zmm7, zmm8
+	LONG $0x482d5262; WORD $0xcb40 // vpmulld zmm9, zmm10, zmm11
+	LONG $0x48155262; WORD $0xe640 // vpmulld zmm12, zmm13, zmm14
+	LONG $0x407d3262; WORD $0xf940 // vpmulld zmm15, zmm16, zmm17
+	LONG $0x4065a262; WORD $0xd440 // vpmulld zmm18, zmm19, zmm20
+	LONG $0x404da262; WORD $0xef40 // vpmulld zmm21, zmm22, zmm23
+	LONG $0x40350262; WORD $0xc240 // vpmulld zmm24, zmm25, zmm26
+	LONG $0x401d0262; WORD $0xdd40 // vpmulld zmm27, zmm28, zmm29
+	SUBQ $1, R9
+	JNZ loopInt32
 	VZEROUPPER
 	RET

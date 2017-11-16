@@ -9,7 +9,7 @@ func benchmarkMullW(b *testing.B, cores int) {
 
 	if cores == 1 {
 		for i := 0; i < b.N; i++ {
-			teraAVX512()
+			teraAvx512Int16()
 		}
 	} else {
 
@@ -18,7 +18,7 @@ func benchmarkMullW(b *testing.B, cores int) {
 		for i := 0; i < b.N; i++ {
 			wg.Add(cores)
 			for c := 0; c < cores; c++ {
-				go func() { teraAVX512(); wg.Done() }()
+				go func() { teraAvx512Int16(); wg.Done() }()
 			}
 			wg.Wait()
 		}
